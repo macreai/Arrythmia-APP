@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3C5A62"
+    tools:context=".ui.RegisterFragment">
+
+    <FrameLayout
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/register_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="245dp"
+                    android:layout_height="70dp"
+                    android:fontFamily="@font/robotomono_bold"
+                    android:text="Sign Up"
+                    android:textAlignment="center"
+                    android:textColor="#374C53"
+                    android:textSize="48sp"
+                    app:layout_constraintBottom_toTopOf="@+id/card_view_username"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_username"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.100000024">
+
+                    <EditText
+                        android:id="@+id/ed_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_ed_text"
+                        android:drawableStart="@drawable/ic_person"
+                        android:drawablePadding="8dp"
+                        android:ems="10"
+                        android:fontFamily="@font/robotomono_light"
+                        android:hint="Username"
+                        android:lines="1"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:textSize="16sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_password"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/card_view_username"
+                    app:layout_constraintStart_toStartOf="@+id/card_view_username"
+                    app:layout_constraintTop_toBottomOf="@+id/card_view_username">
+
+                    <EditText
+                        android:id="@+id/ed_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_ed_text"
+                        android:drawableStart="@drawable/ic_lock"
+                        android:drawablePadding="8dp"
+                        android:hint="Password"
+                        android:fontFamily="@font/robotomono_light"
+                        android:textSize="16sp"
+                        android:ems="10"
+                        android:lines="1"
+                        android:inputType="textPassword"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_address"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/card_view_password"
+                    app:layout_constraintStart_toStartOf="@+id/card_view_password"
+                    app:layout_constraintTop_toBottomOf="@+id/card_view_password">
+
+                    <EditText
+                        android:id="@+id/ed_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_ed_text"
+                        android:drawableStart="@drawable/ic_address"
+                        android:drawablePadding="8dp"
+                        android:hint="Address"
+                        android:fontFamily="@font/robotomono_light"
+                        android:textSize="16sp"
+                        android:ems="10"
+                        android:lines="1"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/card_view_address"
+                    app:layout_constraintStart_toStartOf="@+id/card_view_address"
+                    app:layout_constraintTop_toBottomOf="@+id/card_view_address">
+
+                    <EditText
+                        android:id="@+id/ed_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_ed_text"
+                        android:drawableStart="@drawable/ic_phone"
+                        android:drawablePadding="8dp"
+                        android:hint="Phone"
+                        android:fontFamily="@font/robotomono_light"
+                        android:textSize="16sp"
+                        android:inputType="phone"
+                        android:ems="10"
+                        android:lines="1"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_emergency_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/card_view_phone"
+                    app:layout_constraintStart_toStartOf="@+id/card_view_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/card_view_phone">
+
+                    <EditText
+                        android:id="@+id/ed_emergency_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_ed_text"
+                        android:drawableStart="@drawable/ic_emergency_phone"
+                        android:drawablePadding="8dp"
+                        android:hint="Emergency Phone"
+                        android:fontFamily="@font/robotomono_light"
+                        android:textSize="16sp"
+                        android:inputType="phone"
+                        android:ems="10"
+                        android:lines="1"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_age"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/card_view_emergency_phone"
+                    app:layout_constraintStart_toStartOf="@+id/card_view_emergency_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/card_view_emergency_phone">
+
+                    <EditText
+                        android:id="@+id/ed_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_ed_text"
+                        android:drawableStart="@drawable/ic_age"
+                        android:drawablePadding="8dp"
+                        android:ems="10"
+                        android:fontFamily="@font/robotomono_light"
+                        android:hint="Age"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:textSize="16sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@+id/card_view_age"
+                    app:layout_constraintStart_toStartOf="@+id/card_view_age"
+                    app:layout_constraintTop_toBottomOf="@+id/card_view_age">
+
+                    <RadioButton
+                        android:id="@+id/ed_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/robotomono_light"
+                        android:text="Male"
+                        android:textSize="16sp" />
+
+                    <RadioButton
+                        android:id="@+id/ed_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="64dp"
+                        android:fontFamily="@font/robotomono_light"
+                        android:text="Female"
+                        android:textSize="16sp" />
+                </RadioGroup>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_submit_register"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/bg_submit"
+                    android:fontFamily="@font/robotomono_regular"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="Sign Up"
+                    android:textColor="@color/white"
+                    android:textSize="8sp"
+                    app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+                    app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </FrameLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

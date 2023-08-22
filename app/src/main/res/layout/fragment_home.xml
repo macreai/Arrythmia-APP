@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.HomeFragment">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="500dp"
+        android:src="@drawable/home_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/line_chart_1"
+        android:layout_width="0dp"
+        android:layout_height="113dp"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/line_chart_2"
+        android:layout_width="0dp"
+        android:layout_height="113dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line_chart_1" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/line_chart_3"
+        android:layout_width="0dp"
+        android:layout_height="113dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line_chart_2" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_model"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_chart_3" >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_heart_rate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_output_model"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:fontFamily="@font/robotomono_regular"
+                android:text="Normal"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_device"
+        android:layout_width="0dp"
+        android:layout_height="125dp"
+        android:layout_margin="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/card_view_model"
+        app:layout_constraintTop_toBottomOf="@+id/line_chart_3" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_play_stop"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_play"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_device_name"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:fontFamily="@font/robotomono_regular"
+                android:gravity="center"
+                android:text="Device Name"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_play_stop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btn_play_stop"
+                app:layout_constraintTop_toTopOf="@+id/btn_play_stop" />
+
+            <TextView
+                android:id="@+id/tv_device_id"
+                android:layout_width="120dp"
+                android:layout_height="0dp"
+                android:fontFamily="@font/robotomono_regular"
+                android:gravity="center"
+                android:text="Device ID"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/btn_play_stop"
+                app:layout_constraintTop_toBottomOf="@+id/btn_play_stop"
+                tools:ignore="SmallSp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_connection"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_disconnect"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_device_id"
+                app:layout_constraintTop_toBottomOf="@+id/tv_device_name" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="No Device"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:fontFamily="@font/robotomono_bolditalic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/img_connection"
+                app:layout_constraintStart_toStartOf="@+id/img_connection"
+                app:layout_constraintTop_toBottomOf="@+id/img_connection" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_user"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_view_device" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_username"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/robotomono_bold"
+                android:gravity="center"
+                android:text="Name"
+                android:textColor="@color/blue"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_gender"
+                app:layout_constraintEnd_toStartOf="@+id/tv_gender"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_gender" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_address"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/robotomono_bold"
+                android:gravity="center"
+                android:text="Address"
+                android:textColor="@color/blue"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_username"
+                app:layout_constraintStart_toStartOf="@+id/tv_username"
+                app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_phone_number"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/robotomono_bold"
+                android:gravity="center"
+                android:text="Phone Number"
+                android:textColor="@color/blue"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_address"
+                app:layout_constraintStart_toStartOf="@+id/tv_address"
+                app:layout_constraintTop_toBottomOf="@+id/tv_address" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_age"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/robotomono_bold"
+                android:gravity="center"
+                android:text="Age"
+                android:textColor="@color/blue"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_phone_number"
+                app:layout_constraintStart_toStartOf="@+id/tv_phone_number"
+                app:layout_constraintTop_toBottomOf="@+id/tv_phone_number" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tv_gender"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_male"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/dial_emergency_phone"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_phone_blue"
+                app:layout_constraintEnd_toEndOf="@+id/tv_gender"
+                app:layout_constraintStart_toStartOf="@+id/tv_gender"
+                app:layout_constraintTop_toBottomOf="@+id/tv_gender" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Call Emergency"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="@+id/dial_emergency_phone"
+                app:layout_constraintStart_toStartOf="@+id/dial_emergency_phone"
+                app:layout_constraintTop_toBottomOf="@+id/dial_emergency_phone" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
