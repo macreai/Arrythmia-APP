@@ -32,7 +32,11 @@ class RegisterFragment : Fragment() {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        viewModel.message.observe(this, Observer {  message ->
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            showLoading(it)
+        })
+
+        viewModel.message.observe(viewLifecycleOwner, Observer {  message ->
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         })
 
@@ -55,11 +59,27 @@ class RegisterFragment : Fragment() {
                 // Atau tampilkan pesan kesalahan kepada pengguna
             }
             Log.d("Register Fragment", "onCreateView: $gender")
-            viewModel.patientRegister(username, password, address, phone, emergencyNumber, age, gender)
-            findNavController().popBackStack()
+            if (username.isEmpty() || password.isEmpty() || address.isEmpty() || phone.isEmpty() || emergencyNumber.isEmpty() || age.isEmpty() || gender.isEmpty()){
+                Toast.makeText(requireContext(), "Field(s) is Empty", Toast.LENGTH_SHORT).show()
+            } else if (password.length < 8){
+                Toast.makeText(requireContext(), "Password must be at least 8 character", Toast.LENGTH_SHORT).show()
+            } else {
+                viewModel.patientRegister(username, password, address, phone, emergencyNumber, age, gender)
+                findNavController().popBackStack()
+                Toast.makeText(requireContext(), "Register Success", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
         return view
+    }
+
+    private fun showLoading(isLoading: Boolean){
+        if (isLoading){
+            binding.loading.visibility = View.VISIBLE
+        } else {
+            binding.loading.visibility = View.GONE
+        }
     }
 
     override fun onDestroyView() {

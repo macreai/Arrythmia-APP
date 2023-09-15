@@ -22,6 +22,14 @@ class PairedDeviceAdapter(private val devices: MutableList<BleDevice>): Recycler
         this.onClickListener = onClickListener
     }
 
+    fun removeDevice(device: BleDevice) {
+        val position = devices.indexOf(device)
+        if (position != -1) {
+            devices.removeAt(position)
+            notifyItemRemoved(position)
+        }
+    }
+
     class ViewHolder(private val binding: ItemDeviceBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(device: BleDevice){
             binding.tvDeviceName.text = device.name ?: "Unknown Device"

@@ -19,10 +19,10 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("login")
-    fun loginPatient(
+    suspend fun loginPatient(
         @Field("username") username: String,
         @Field("password") password: String
-    ): Call<PatientLoginResponse>
+    ): PatientLoginResponse
 
     @FormUrlEncoded
     @PUT("patient/edit")

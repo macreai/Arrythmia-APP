@@ -1,6 +1,8 @@
 package com.macreai.projectkp.repo
 
+import android.content.Intent
 import android.util.Log
+import com.macreai.projectkp.MainActivity
 import com.macreai.projectkp.model.local.UserPreference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
@@ -9,6 +11,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import okhttp3.Interceptor
+import java.lang.RuntimeException
 
 class AuthRepository(private val pref: UserPreference): Interceptor {
     /*

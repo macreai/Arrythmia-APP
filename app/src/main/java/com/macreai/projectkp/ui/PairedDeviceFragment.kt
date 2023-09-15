@@ -14,6 +14,9 @@ import com.clj.fastble.BleManager
 import com.clj.fastble.data.BleDevice
 import com.macreai.projectkp.adapter.PairedDeviceAdapter
 import com.macreai.projectkp.databinding.FragmentPairedDeviceBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class PairedDeviceFragment : Fragment() {
@@ -39,30 +42,18 @@ class PairedDeviceFragment : Fragment() {
         pairedDeviceAdapter.setOnClickListener(object : PairedDeviceAdapter.OnClickListener{
             override fun onClick(data: BleDevice) {
                 BleManager.getInstance().disconnect(data)
-                if (BleManager.getInstance().isConnected(data)){
-                    Toast.makeText(requireContext(), "Failed to Disconnect", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(requireContext(), "Device Disconnected", Toast.LENGTH_SHORT).show()
-                }
+                pairedDeviceAdapter.removeDevice(data)
+                Toast.makeText(requireContext(), "Device Disconnected", Toast.LENGTH_SHORT).show()
+//                if (BleManager.getInstance().isConnected(data)){
+//                    Toast.makeText(requireContext(), "Failed to Disconnect", Toast.LENGTH_SHORT).show()
+//                } else {
+//                    Toast.makeText(requireContext(), "Device Disconnected", Toast.LENGTH_SHORT).show()
+//                }
             }
 
         })
 
         return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        showPairedDevices()
-    }
-
-    @SuppressLint("NotifyDataSetChanged", "MissingPermission")
-    private fun showPairedDevices() {
-        // val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-        // bluetoothAdapter?.bondedDevices?.let {
-        //    pairedDevices.addAll(it)
-        //    pairedDeviceAdapter.notifyDataSetChanged()
-        // }
     }
 
     override fun onDestroyView() {

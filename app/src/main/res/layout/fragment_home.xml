@@ -73,7 +73,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:fontFamily="@font/robotomono_regular"
-                android:text="Normal"
+                android:text="Output"
                 android:textSize="16sp"
                 android:textAlignment="center"
                 android:gravity="center"
@@ -166,15 +166,13 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_user"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="32dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_view_device" >
+        app:layout_constraintEnd_toEndOf="@+id/card_view_device"
+        app:layout_constraintStart_toStartOf="@+id/card_view_model"
+        app:layout_constraintTop_toBottomOf="@+id/card_view_device">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -182,34 +180,53 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_username"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:layout_margin="8dp"
+                android:layout_marginStart="16dp"
                 android:fontFamily="@font/robotomono_bold"
-                android:gravity="center"
-                android:text="Name"
+                android:text="Name: "
                 android:textColor="@color/blue"
-                android:textAlignment="center"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_gender"
-                app:layout_constraintEnd_toStartOf="@+id/tv_gender"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_gender" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_username_person"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/robotomono_medium"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_username"
+                app:layout_constraintStart_toEndOf="@+id/tv_username"
+                app:layout_constraintTop_toTopOf="@+id/tv_username" />
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_address"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/robotomono_bold"
-                android:gravity="center"
-                android:text="Address"
+                android:text="Address: "
                 android:textColor="@color/blue"
-                android:textAlignment="center"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_username"
                 app:layout_constraintStart_toStartOf="@+id/tv_username"
                 app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_address_person"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/robotomono_medium"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_address"
+                app:layout_constraintStart_toEndOf="@+id/tv_address"
+                app:layout_constraintTop_toTopOf="@+id/tv_address" />
+
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_phone_number"
@@ -218,13 +235,25 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/robotomono_bold"
                 android:gravity="center"
-                android:text="Phone Number"
-                android:textColor="@color/blue"
+                android:text="Phone Number: "
                 android:textAlignment="center"
+                android:textColor="@color/blue"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_address"
                 app:layout_constraintStart_toStartOf="@+id/tv_address"
                 app:layout_constraintTop_toBottomOf="@+id/tv_address" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_phone_number_person"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/robotomono_medium"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_phone_number"
+                app:layout_constraintStart_toEndOf="@+id/tv_phone_number"
+                app:layout_constraintTop_toTopOf="@+id/tv_phone_number" />
+
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_age"
@@ -233,18 +262,29 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/robotomono_bold"
                 android:gravity="center"
-                android:text="Age"
-                android:textColor="@color/blue"
+                android:text="Age: "
                 android:textAlignment="center"
+                android:textColor="@color/blue"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_phone_number"
                 app:layout_constraintStart_toStartOf="@+id/tv_phone_number"
                 app:layout_constraintTop_toBottomOf="@+id/tv_phone_number" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_age_person"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/robotomono_medium"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_age"
+                app:layout_constraintStart_toEndOf="@+id/tv_age"
+                app:layout_constraintTop_toTopOf="@+id/tv_age" />
 
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tv_gender"
-                android:layout_width="50dp"
+                android:layout_width="75dp"
                 android:layout_height="50dp"
                 android:layout_margin="8dp"
                 android:src="@drawable/ic_male"
@@ -253,7 +293,7 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/dial_emergency_phone"
-                android:layout_width="50dp"
+                android:layout_width="75dp"
                 android:layout_height="50dp"
                 android:layout_margin="8dp"
                 android:src="@drawable/ic_phone_blue"
@@ -264,11 +304,11 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Call Emergency"
+                android:textAlignment="center"
                 android:textSize="8sp"
                 android:textStyle="bold"
-                android:textAlignment="center"
-                android:gravity="center"
                 app:layout_constraintEnd_toEndOf="@+id/dial_emergency_phone"
                 app:layout_constraintStart_toStartOf="@+id/dial_emergency_phone"
                 app:layout_constraintTop_toBottomOf="@+id/dial_emergency_phone" />

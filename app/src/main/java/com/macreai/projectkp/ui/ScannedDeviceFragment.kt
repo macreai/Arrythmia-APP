@@ -98,10 +98,11 @@ class ScannedDeviceFragment : Fragment()  {
     private fun connectDevice(device: BleDevice){
         BleManager.getInstance().connect(device, object : BleGattCallback(){
             override fun onStartConnect() {
-                Toast.makeText(requireContext(), "Initiating..", Toast.LENGTH_SHORT).show()
+                showLoading(true)
             }
 
             override fun onConnectFail(bleDevice: BleDevice?, exception: BleException?) {
+                showLoading(false)
                 Toast.makeText(requireContext(), "Failed to connect", Toast.LENGTH_SHORT).show()
             }
 
@@ -110,6 +111,7 @@ class ScannedDeviceFragment : Fragment()  {
                 gatt: BluetoothGatt?,
                 status: Int
             ) {
+                showLoading(false)
                 Toast.makeText(requireContext(), "Connected!", Toast.LENGTH_SHORT).show()
                 appViewModel.setConnectedDevice(device)
                 findNavController().popBackStack()
@@ -128,8 +130,18 @@ class ScannedDeviceFragment : Fragment()  {
         })
     }
 
+    private fun showLoading(isLoading: Boolean){
+        if (isLoading){
+            binding.loading.visibility = View.VISIBLE
+        } else {
+            binding.loading.visibility = View.GONE
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
+        if (isScanning)
+            BleManager.getInstance().cancelScan()
         _binding = null
     }
 

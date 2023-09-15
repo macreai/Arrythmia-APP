@@ -17,7 +17,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "BASE_URL", '"https://ddd9-182-253-194-58.ngrok-free.app/api/"')
+        buildConfigField("String", "BASE_URL", '"https://aritmia.telekardiologi.com/api/"')
+        buildConfigField("String", "MODEL_URL", '"https://arrhythmia-flask.onrender.com/"')
+
     }
 
     buildTypes {

@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.macreai.projectkp.R
 import com.macreai.projectkp.dataStore
 import com.macreai.projectkp.databinding.FragmentEditBinding
@@ -33,8 +34,8 @@ class EditFragment : Fragment() {
         _binding = FragmentEditBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        viewModel.message.observe(this, Observer {  message ->
-            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            showLoading(it)
         })
 
         binding.btnBackToHome.setOnClickListener {
@@ -42,8 +43,7 @@ class EditFragment : Fragment() {
         }
 
         binding.btnLogOut.setOnClickListener {
-            viewModel.patientLogout()
-            view.findNavController().navigate(R.id.action_editFragment_to_loginFragment)
+            showLogoutDialog()
         }
 
         binding.btnSubmitEdit.setOnClickListener {
@@ -59,9 +59,47 @@ class EditFragment : Fragment() {
                 val selectedRadioButton = binding.root.findViewById<RadioButton>(selectedRadioButtonId)
                 gender = selectedRadioButton.text.toString()
             }
-            viewModel.patientEdit(address, phone, emergencyNumber, age, gender, password)
+
+            val allFieldIsEmpty = address.isEmpty() || phone.isEmpty() || emergencyNumber.isEmpty()
+                    || age.isEmpty() || gender.isEmpty() || password.isEmpty()
+            if (allFieldIsEmpty){
+                Toast.makeText(requireContext(), "Field(s) is Empty", Toast.LENGTH_SHORT).show()
+            } else {
+                viewModel.patientEdit(address, phone, emergencyNumber, age, gender, password)
+                Toast.makeText(requireContext(), "Edit Successful", Toast.LENGTH_SHORT).show()
+                findNavController().popBackStack()
+            }
         }
 
         return view
+    }
+
+    private fun showLoading(isLoading: Boolean){
+        if (isLoading){
+            binding.loading.visibility = View.VISIBLE
+        } else {
+            binding.loading.visibility = View.GONE
+        }
+    }
+
+    private fun showLogoutDialog(){
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Logout")
+            .setMessage("Are you sure want to logout?")
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setPositiveButton("Yes"){ _, _ ->
+                viewModel.saveToken("")
+                viewModel.saveId(0)
+                viewModel.patientLogout()
+                activity?.finish()
+            }.show()
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

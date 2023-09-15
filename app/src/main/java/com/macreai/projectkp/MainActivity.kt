@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        instance = this
+
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
 
         BleManager.getInstance().init(application)
@@ -139,6 +141,11 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private const val REQUEST_CODE_OPEN_GPS = 1
         private const val REQUEST_CODE_PERMISSION_LOCATION = 2
+        private lateinit var instance: MainActivity
+
+        fun getContext(): Context {
+            return instance.applicationContext
+        }
 
     }
 
