@@ -1,21 +1,9 @@
 package com.macreai.projectkp.util
 
-import java.lang.Float.intBitsToFloat
-import java.nio.ByteBuffer
-
 object Helper {
 
     fun millisToSeconds(millis: Long): Float {
         return (millis / 1000.0).toFloat().let { "%.3f".format(it).toFloat() }
-    }
-
-    fun byteArrayToFloat(bytes: ByteArray): Float {
-        if (bytes.size != 4) {
-            throw IllegalArgumentException("Byte array harus memiliki panjang 4 untuk mengonversi ke float")
-        }
-
-        val intBits = ByteBuffer.wrap(bytes).int
-        return intBitsToFloat(intBits)
     }
 
 

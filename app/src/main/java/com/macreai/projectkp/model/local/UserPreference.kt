@@ -51,7 +51,6 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
     }
 
     companion object {
-        private const val DEFAULT_ID = 0
         private const val DEFAULT_TOKEN = ""
         @Volatile
         private var INSTANCE: UserPreference? = null

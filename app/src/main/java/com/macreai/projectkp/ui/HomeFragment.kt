@@ -1,7 +1,5 @@
 package com.macreai.projectkp.ui
 
-import android.bluetooth.BluetoothGattCharacteristic
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -13,16 +11,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.clj.fastble.BleManager
 import com.clj.fastble.callback.BleNotifyCallback
-import com.clj.fastble.callback.BleReadCallback
-import com.clj.fastble.callback.BleWriteCallback
 import com.clj.fastble.data.BleDevice
 import com.clj.fastble.exception.BleException
 import com.github.mikephil.charting.data.Entry
@@ -42,13 +35,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import okhttp3.internal.notify
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
-import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets
-import java.text.DecimalFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
@@ -197,7 +185,7 @@ class HomeFragment : Fragment() {
                     Log.d(TAG, "array time: $exampleTimeChart")
                     Log.d(TAG, "array ekg1: $examplePointChart1")
                     Log.d(TAG, "array ekg2: $examplePointChart2")
-                    predict(examplePointChart1.toString(), examplePointChart2.toString())
+                    predict(examplePointChart1, examplePointChart2)
                     exampleTimeChart.clear()
                     examplePointChart1.clear()
                 }
@@ -364,8 +352,6 @@ class HomeFragment : Fragment() {
 
     }
 
-
-
     private fun initViewChart1() {
         binding.lineChart1.description.text = "EKG 1"
         binding.lineChart1.setNoDataText("No data available")
@@ -381,63 +367,23 @@ class HomeFragment : Fragment() {
         binding.lineChart3.setNoDataText("No data available")
     }
 
-
-
-    /*
-    private fun plottingChart1(): ArrayList<Entry> {
-        val dataValues: ArrayList<Entry> = ArrayList()
-
-        // Menambahkan semua data yang ada dalam exampleTimeChart dan examplePointChart1
-        for ((elem1, elem2) in exampleTimeChart.zip(examplePointChart1)) {
-            dataValues.add(Entry(elem1, elem2))
+    private fun predict(ekg1: ArrayList<Float>, ekg2: ArrayList<Float>){
+        if (ekg1.size > ekg2.size) {
+            val diff = ekg1.size - ekg2.size
+            repeat(diff) {
+                ekg1.removeAt(ekg1.size - 1)
+            }
         }
-
-        // Menambahkan data terbaru yang belum ditambahkan ke grafik
-        for (i in lastPlottedIndex until exampleTimeChart.size) {
-            dataValues.add(Entry(exampleTimeChart[i], examplePointChart1[i]))
-            lastPlottedIndex = i + 1
+        else if (ekg2.size > ekg1.size) {
+            val diff = ekg2.size - ekg1.size
+            repeat(diff) {
+                ekg2.removeAt(ekg2.size - 1)
+            }
         }
-
-        return dataValues
-    }
-
-     */
-    /*
-    private fun initViewChart2() {
-        val lineDataset2 = LineDataSet(plottingChart2(), "EKG 2")
-        lineDataset2.setDrawCircles(false)
-        val dataset: ArrayList<ILineDataSet> = ArrayList()
-        dataset.add(lineDataset2)
-        val data = LineData(dataset)
-        binding.lineChart2.data = data
-        binding.lineChart2.invalidate()
-    }
-
-    private fun plottingChart2(): ArrayList<Entry> {
-        val dataValues: ArrayList<Entry> = ArrayList<Entry>()
-        for ((elem1, elem2) in exampleTimeChart.zip(examplePointChart2)){
-            val elem1ToFloatOrInt = extractSeconds(elem1)
-            dataValues.add(Entry(elem1ToFloatOrInt!!.toFloat(), elem2.toString().toFloat()))
-        }
-        return dataValues
-    }
-     */
-
-    /*
-    private fun byteArrayToFloat(byteArray: ByteArray?): Float {
-        if (byteArray == null || byteArray.size < 4) {
-            throw IllegalArgumentException("Invalid byte array")
-        }
-        val buffer = ByteBuffer.wrap(byteArray)
-        return buffer.float
-    }
-    */
-
-    private fun predict(ekg1: String, ekg2: String){
         lifecycleScope.launchWhenResumed {
             if (modelJob.isActive) modelJob.cancel()
             modelJob = launch {
-                viewModel.modelPrediction(ekg1, ekg2).collect{result ->
+                viewModel.modelPrediction(ekg1.toString(), ekg2.toString()).collect{result ->
                     result.onSuccess {
                         Log.d(TAG, "predict: ${it.hasil}")
                         binding.tvOutputModel.text = if (it.hasil == "['N']"){

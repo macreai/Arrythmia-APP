@@ -1,6 +1,5 @@
 package com.macreai.projectkp.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,14 +12,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import com.macreai.projectkp.MainActivity
 import com.macreai.projectkp.R
 import com.macreai.projectkp.dataStore
 import com.macreai.projectkp.databinding.FragmentLoginBinding
 import com.macreai.projectkp.viewmodel.AppViewModel
 import com.macreai.projectkp.viewmodel.ViewModelFactory
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment() {

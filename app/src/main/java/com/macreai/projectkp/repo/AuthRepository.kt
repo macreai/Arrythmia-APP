@@ -1,39 +1,14 @@
 package com.macreai.projectkp.repo
 
-import android.content.Intent
 import android.util.Log
-import com.macreai.projectkp.MainActivity
 import com.macreai.projectkp.model.local.UserPreference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.last
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import okhttp3.Interceptor
-import java.lang.RuntimeException
 
 class AuthRepository(private val pref: UserPreference): Interceptor {
-    /*
-    private val userToken = runBlocking {
-        pref.getUser()
-            .map { value: UserDataStore -> value.token }
-            .first()
-    }
-
-    private val userId = runBlocking {
-        pref.getUser()
-            .map { value: UserDataStore -> value.id }
-            .first()
-    }
-    */
-
-    suspend fun getUserId(): Int{
-        return withContext(Dispatchers.IO){
-            val user = pref.getUserId().first()
-            user
-        }
-    }
 
     private suspend fun getUserToken(): String{
         return withContext(Dispatchers.IO){

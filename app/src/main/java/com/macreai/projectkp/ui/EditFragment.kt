@@ -1,7 +1,6 @@
 package com.macreai.projectkp.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +9,8 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.macreai.projectkp.R
 import com.macreai.projectkp.dataStore
 import com.macreai.projectkp.databinding.FragmentEditBinding
 import com.macreai.projectkp.viewmodel.AppViewModel
@@ -30,7 +26,7 @@ class EditFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentEditBinding.inflate(inflater, container, false)
         val view = binding.root
 

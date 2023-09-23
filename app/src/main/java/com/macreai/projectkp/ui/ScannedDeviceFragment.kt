@@ -2,35 +2,23 @@ package com.macreai.projectkp.ui
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.app.Dialog
 import android.bluetooth.*
 import android.content.*
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getDrawable
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.clj.fastble.BleManager
 import com.clj.fastble.callback.BleGattCallback
-import com.clj.fastble.callback.BleNotifyCallback
-import com.clj.fastble.callback.BleReadCallback
 import com.clj.fastble.data.BleDevice
 import com.clj.fastble.exception.BleException
-import com.macreai.projectkp.R
 import com.macreai.projectkp.adapter.ScanDeviceAdapter
 import com.macreai.projectkp.dataStore
 import com.macreai.projectkp.databinding.FragmentScannedDeviceBinding
@@ -58,7 +46,7 @@ class ScannedDeviceFragment : Fragment()  {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentScannedDeviceBinding.inflate(inflater, container, false)
         val view = binding.root
 
@@ -143,13 +131,5 @@ class ScannedDeviceFragment : Fragment()  {
         if (isScanning)
             BleManager.getInstance().cancelScan()
         _binding = null
-    }
-
-    companion object {
-        private const val REQUEST_CODE_PERMISSION_LOCATION = 2
-        private const val LIST_NAME = "NAME"
-        private const val LIST_UUID = "uuid"
-        const val EXTRA_DEVICE = "extra_device"
-        private const val TAG = "ScannedDeviceFragment"
     }
 }

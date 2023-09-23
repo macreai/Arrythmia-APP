@@ -10,7 +10,7 @@ import com.macreai.projectkp.databinding.ItemDeviceBinding
 
 
 @SuppressLint("MissingPermission")
-class ScanDeviceAdapter(private val devices: List<BleDevice>): RecyclerView.Adapter<ScanDeviceAdapter.ViewHolder>() {
+class ScanDeviceAdapter(devices: List<BleDevice>): RecyclerView.Adapter<ScanDeviceAdapter.ViewHolder>() {
 
     private val mutableDevice: MutableList<BleDevice> = devices.toMutableList()
 
@@ -59,15 +59,6 @@ class ScanDeviceAdapter(private val devices: List<BleDevice>): RecyclerView.Adap
         }
     }
 
-    fun clearConnectedDevice() {
-        for (i in 0 until mutableDevice.size) {
-            val device: BleDevice = mutableDevice[i]
-            if (BleManager.getInstance().isConnected(device)) {
-                mutableDevice.removeAt(i)
-            }
-        }
-    }
-
     fun clearScanDevice() {
         for (i in 0 until mutableDevice.size) {
             val device: BleDevice = mutableDevice[i]
@@ -76,10 +67,4 @@ class ScanDeviceAdapter(private val devices: List<BleDevice>): RecyclerView.Adap
             }
         }
     }
-
-    fun clear() {
-        clearConnectedDevice()
-        clearScanDevice()
-    }
-
 }

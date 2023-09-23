@@ -1,7 +1,6 @@
 package com.macreai.projectkp.adapter
 
 import android.annotation.SuppressLint
-import android.bluetooth.BluetoothDevice
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

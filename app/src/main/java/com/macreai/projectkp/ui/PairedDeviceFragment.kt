@@ -1,8 +1,5 @@
 package com.macreai.projectkp.ui
 
-import android.annotation.SuppressLint
-import android.bluetooth.BluetoothAdapter
-import android.bluetooth.BluetoothDevice
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,9 +11,6 @@ import com.clj.fastble.BleManager
 import com.clj.fastble.data.BleDevice
 import com.macreai.projectkp.adapter.PairedDeviceAdapter
 import com.macreai.projectkp.databinding.FragmentPairedDeviceBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 
 class PairedDeviceFragment : Fragment() {

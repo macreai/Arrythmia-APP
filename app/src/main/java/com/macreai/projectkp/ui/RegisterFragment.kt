@@ -10,9 +10,7 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import com.macreai.projectkp.R
 import com.macreai.projectkp.dataStore
 import com.macreai.projectkp.databinding.FragmentRegisterBinding
 import com.macreai.projectkp.viewmodel.AppViewModel
