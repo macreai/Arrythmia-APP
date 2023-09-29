@@ -8,8 +8,9 @@ interface ModelApiService {
     @FormUrlEncoded
     @POST("/predict")
     suspend fun predict(
-        @Field("ekg1") ekg1: String,
-        @Field("ekg2") ekg2: String
+        @Field("patient_id") id: String,
+        @Field("lead1") lead1: String,
+        @Field("lead2") lead2: String
     ): PredictResponse
 
 }

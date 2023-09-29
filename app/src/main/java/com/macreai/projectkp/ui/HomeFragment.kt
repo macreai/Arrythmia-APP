@@ -185,7 +185,9 @@ class HomeFragment : Fragment() {
                     Log.d(TAG, "array time: $exampleTimeChart")
                     Log.d(TAG, "array ekg1: $examplePointChart1")
                     Log.d(TAG, "array ekg2: $examplePointChart2")
-                    predict(examplePointChart1, examplePointChart2)
+                    viewModel.getLoginId().observe(viewLifecycleOwner, Observer { id ->
+                        predict(id.toString(),examplePointChart1, examplePointChart2)
+                    })
                     exampleTimeChart.clear()
                     examplePointChart1.clear()
                 }
@@ -367,7 +369,7 @@ class HomeFragment : Fragment() {
         binding.lineChart3.setNoDataText("No data available")
     }
 
-    private fun predict(ekg1: ArrayList<Float>, ekg2: ArrayList<Float>){
+    private fun predict(id: String, ekg1: ArrayList<Float>, ekg2: ArrayList<Float>){
         if (ekg1.size > ekg2.size) {
             val diff = ekg1.size - ekg2.size
             repeat(diff) {
@@ -383,7 +385,7 @@ class HomeFragment : Fragment() {
         lifecycleScope.launchWhenResumed {
             if (modelJob.isActive) modelJob.cancel()
             modelJob = launch {
-                viewModel.modelPrediction(ekg1.toString(), ekg2.toString()).collect{result ->
+                viewModel.modelPrediction(id, ekg1.toString(), ekg2.toString()).collect{result ->
                     result.onSuccess {
                         Log.d(TAG, "predict: ${it.hasil}")
                         binding.tvOutputModel.text = if (it.hasil == "['N']"){

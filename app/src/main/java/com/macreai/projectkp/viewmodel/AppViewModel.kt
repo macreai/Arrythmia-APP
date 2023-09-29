@@ -45,6 +45,9 @@ class AppViewModel(private val pref: UserPreference): ViewModel() {
 
     fun getLogin(): LiveData<String> = pref.getUserToken().asLiveData()
 
+    fun getLoginId(): LiveData<Int> = pref.getUserId().asLiveData()
+
+
     fun getDetailUser(){
         ApiConfig.getApiService(pref).getDetailUser()
             .enqueue(object: Callback<User>{
@@ -234,11 +237,12 @@ class AppViewModel(private val pref: UserPreference): ViewModel() {
     }
 
     suspend fun modelPrediction(
+        id: String,
         ekg1: String,
         ekg2: String
     ): Flow<Result<PredictResponse>> = flow {
         try {
-            val response = ModelApiConfig.getModelApiService().predict(ekg1, ekg2)
+            val response = ModelApiConfig.getModelApiService().predict(id, ekg1, ekg2)
             emit(Result.success(response))
         } catch (e: Exception){
             e.printStackTrace()
