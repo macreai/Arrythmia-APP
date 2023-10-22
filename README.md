@@ -1,4 +1,4 @@
-![image](https://github.com/macreai/Arrythmia-APP/assets/76419622/101b2033-f442-4b95-a389-c92772aaa5eb)# Arrythmia-APP
+# Arrythmia-APP
 
 This application can connect to IoT devices capable of detecting arrhythmia,
 enabling remote monitoring of patients by doctors. My responsibility is to receive
